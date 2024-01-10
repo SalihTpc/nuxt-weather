@@ -1,87 +1,89 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation </a
-            >.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3" />
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br />
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/data-table"> Continue </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+  <div
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+    "
+  >
+    <SearchBar />
+    <div style="display: flex; align-items: center; justify-content: center">
+      <WeatherCard />
+    </div>
+  </div>
 </template>
 
 <script>
+import SearchBar from '../components/SearchBar.vue'
+import WeatherCard from '../components/WeatherCard.vue'
+
 export default {
   name: 'IndexPage',
+  components: { SearchBar, WeatherCard },
 }
 </script>
+
+<!-- <template>
+  <div>
+    <v-container>
+      <v-row>
+        <v-col>
+          <v-text-field
+            v-model="search"
+            label="Şehir Ara"
+            @input="handleSearch"
+          ></v-text-field>
+        </v-col>
+      </v-row>
+
+      <v-row v-if="loading">
+        <v-col>
+          <v-progress-linear indeterminate color="primary"></v-progress-linear>
+        </v-col>
+      </v-row>
+
+      <v-row v-if="results.length > 0">
+        <v-col v-for="result in results" :key="result.id" cols="12" md="4">
+          <v-card>
+            <v-card-title>{{ result.name }}</v-card-title>
+            <v-card-subtitle>{{
+              result.weather[0].description
+            }}</v-card-subtitle>
+            <v-card-subtitle>{{ result.main.temp }}°C</v-card-subtitle>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
+</template>
+
+<script>
+import { state } from '../store/index'
+export default {
+  data() {
+    return {
+      search: '',
+    }
+  },
+  computed: {
+    loading() {
+      return this.$store.state.loading
+    },
+    results() {
+      return this.$store.state.results
+    },
+  },
+  methods: {
+    async handleSearch() {
+      this.$store.commit('setSearch', this.search)
+      await this.$store.dispatch('fetchWeather')
+    },
+  },
+}
+</script>
+
+<style scoped>
+/* Gerekirse CSS stilleri ekleyebilirsiniz. */
+</style> -->
