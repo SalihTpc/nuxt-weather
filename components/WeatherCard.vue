@@ -36,17 +36,22 @@
         <v-card-title style="flex: 2">{{
           item.weather[0].description
         }}</v-card-title>
-        <v-card-text style="flex: 1">
-          <div class="grey--text ms-4">
-            <v-icon color="orange" dense>mdi-thermometer</v-icon>
-            <span>{{ item.main.temp }}</span>
-            <span>
-              <v-icon color="orange" style="font-size: inherit"
-                >mdi-temperature-celsius</v-icon
-              >
-            </span>
-          </div>
-        </v-card-text>
+        <div
+          style="
+            flex: 1;
+            display: flex;
+            align-items: end;
+            justify-content: center;
+          "
+        >
+          <v-icon color="orange" dense>mdi-thermometer</v-icon>
+          <span>{{ item.main.temp }}</span>
+          <span>
+            <v-icon color="orange" style="font-size: inherit"
+              >mdi-temperature-celsius</v-icon
+            >
+          </span>
+        </div>
       </div>
 
       <v-card-actions
