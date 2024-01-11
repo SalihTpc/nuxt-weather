@@ -22,8 +22,8 @@
       :key="index"
       :loading="loading"
       class="mx-auto my-12"
-      min-width="300"
-      min-height="250"
+      min-width="250"
+      min-height="200"
       color="#26c6da"
       dark
       max-width="400"
@@ -33,9 +33,9 @@
       <v-card-title>{{ item.name }}</v-card-title>
       <v-divider class="mx-4"></v-divider>
       <div style="display: flex; align-items: center; justify-content: center">
-        <v-card-title style="flex: 2">{{
-          item.weather[0].description
-        }}</v-card-title>
+        <p style="flex: 2; margin: 0.5rem; font-weight: 500">
+          {{ item.weather[0].description }}
+        </p>
         <div
           style="
             flex: 1;
